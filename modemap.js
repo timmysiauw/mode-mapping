@@ -211,22 +211,18 @@ var modemap = function() {
 
         plot_pts: function(map_id, center, default_zoom, query_name, lat_col, lng_col, radius_fun, color_fun) {
 
-            console.log("plot_pts!")
-
             var content = mode.get_query_content(query_name)
-            console.log(content)
 
             var map = map.init(map_id, center, default_zoom)
 
             for (var i=0; i<content.length; i++) {
-                var marker = L.circleMarker(
+                L.circleMarker(
                     [content[i][lat_col], content[i][lng_col]],
                     {
                         radius: 2,
                         fillColor: "#FF0000"
                     }
-                )
-                marker.addTo(map)
+                ).addTo(map)
             }
 
             return map
@@ -236,7 +232,7 @@ var modemap = function() {
 
             var content = get_query_content(query_name)
 
-            var map = map_id instanceof String ? map.init(map_id, center, default_zoom) : map_id
+            var map = map.init(map_id, center, default_zoom)
 
             for (var i=0; i<content.length; i++) {
                 L.rectangle(
@@ -244,7 +240,7 @@ var modemap = function() {
                     {
                         color: "#FF0000"
                     }
-                ).addTo(map);
+                ).addTo(map)
             }
 
             return map
