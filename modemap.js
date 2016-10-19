@@ -1,7 +1,3 @@
-/* High level Javascripts functions for adding maps to webpages.
-
-*/
-
 var modemap = function() {
 
     var color = {
@@ -22,7 +18,7 @@ var modemap = function() {
                 "blue": "#2aace3"
             }
         },
-        color_fun: {
+        fun: {
             constant: function(color) {
                 return function(content, index) {
                     return color
@@ -65,18 +61,18 @@ var modemap = function() {
 
                 colors.index = function(min, max, value) {
                     if (value > max) return 255;
-                    else if (value < 0) return 0;
+                    else if (value < min) return 0;
                     else return Math.floor(256*(value - min)/(max-min));
                 }
 
-                return function(content, index) {
-                    return colors.hex[colors.index(min_sat, max_sat, content[i][val_col])]
+                return function(content, idx) {
+                    return colors.hex[colors.index(min_sat, max_sat, content[idx][val_col])]
                 }
             }
         }
     }
 
-    var map = {
+    var mapping = {
         init: function(map_id, center, default_zoom) {
             var map = L.map(map_id).setView(center, default_zoom)
             L.tileLayer(
@@ -220,14 +216,18 @@ var modemap = function() {
 
             var content = mode.get_query_content(query_name)
 
-            var map = map.init(map_id, center, default_zoom)
+            var map = mapping.init(map_id, center, default_zoom)
 
             for (var i=0; i<content.length; i++) {
                 L.circleMarker(
                     [content[i][lat_col], content[i][lng_col]],
                     {
-                        radius: 2,
-                        fillColor: "#FF0000"
+                        radius: radius_fun ? radius_fun(content, i) : 2,
+                        weight: 1,
+                        color: "#000000",
+                        opacity: 1,
+                        fillOpacity: 0.5,
+                        fillColor: color_fun ? color_fun(content, i) : "#FF0000"
                     }
                 ).addTo(map)
             }
@@ -235,17 +235,21 @@ var modemap = function() {
             return map
         },
 
-        ghs: function(map_id, center, query_name, gh_col, val_col, color_fun) {
+        ghs: function(map_id, center, default_zoom, query_name, gh_col, val_col, color_fun) {
 
-            var content = get_query_content(query_name)
+            var content = mode.get_query_content(query_name)
 
-            var map = map.init(map_id, center, default_zoom)
+            var map = mapping.init(map_id, center, default_zoom)
 
             for (var i=0; i<content.length; i++) {
                 L.rectangle(
                     geohash.decode(content[i][gh_col]).corners,
                     {
-                        color: "#FF0000"
+                        weight: 1,
+                        color: "#000000",
+                        fillOpacity: 0.5,
+                        fillColor: color_fun ? color_fun(content, i) : "#FF0000"
+
                     }
                 ).addTo(map)
             }
@@ -256,7 +260,7 @@ var modemap = function() {
 
     return {
         color: color,
-        map: map,
+        mapping: mapping,
         geohash: geohash,
         mode: mode,
         plot: plot
