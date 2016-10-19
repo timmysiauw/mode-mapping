@@ -219,13 +219,14 @@ var modemap = function() {
 
             for (var i=0; i<content.length; i++) {
                 console.log(content[i])
-                L.CircleMarker(
+                var marker = L.circleMarker(
                     [content[i][lat_col], content[i][lng_col]],
                     {
                         radius: 2,
                         fillColor: "#FF0000"
                     }
-                ).add_to(map)
+                )
+                marker.add_to(map)
             }
 
             return map
