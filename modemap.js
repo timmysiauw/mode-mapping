@@ -216,11 +216,9 @@ var modemap = function() {
             var content = mode.get_query_content(query_name)
             console.log(content)
 
-            var map = map_id instanceof String ? map.init(map_id, center, default_zoom) : map_id
-            console.log(map)
+            var map = map.init(map_id, center, default_zoom)
 
             for (var i=0; i<content.length; i++) {
-                console.log(content[i])
                 var marker = L.circleMarker(
                     [content[i][lat_col], content[i][lng_col]],
                     {
@@ -228,7 +226,6 @@ var modemap = function() {
                         fillColor: "#FF0000"
                     }
                 )
-                console.log(marker)
                 marker.addTo(map)
             }
 
