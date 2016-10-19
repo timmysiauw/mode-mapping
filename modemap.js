@@ -4,15 +4,22 @@
 
 var modemap = function() {
 
-    console.log("Hello, World!")
-
     var color = {
         pallettes: {
             "lyft": {
-                "pink": "#ff00bf"
+                "pink": "#ff00bf",
+                "mulberry": "#352384",
+                "bone": "#F3F3F5",
+                "charcoal": "#333447",
+                "stone": "#bfc7d9"
             },
             "lyft-deprecated": {
-
+                "pink": "#ea0b8c",
+                "dk-pink": "#ae005e",
+                "orange": "#faa33h",
+                "yellow": "#fc3322",
+                "green": "#33d9c2",
+                "blue": "#2aace3"
             }
         },
         color_fun: {
@@ -209,7 +216,7 @@ var modemap = function() {
 
     var plot = {
 
-        plot_pts: function(map_id, center, default_zoom, query_name, lat_col, lng_col, radius_fun, color_fun) {
+        pts: function(map_id, center, default_zoom, query_name, lat_col, lng_col, radius_fun, color_fun) {
 
             var content = mode.get_query_content(query_name)
 
@@ -228,7 +235,7 @@ var modemap = function() {
             return map
         },
 
-        plot_ghs: function(map_id, center, query_name, gh_col, val_col, color_fun) {
+        ghs: function(map_id, center, query_name, gh_col, val_col, color_fun) {
 
             var content = get_query_content(query_name)
 
