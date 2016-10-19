@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="Test"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.00" />
+
+    <title>Mode Map Testing</title>
+
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css">
+    <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+    <script src = "modemap.js"></script>
+
+    <script>
+        console.log(modemap)
+
+        console.log(modemap.color.pallettes["lyft"]["pink"])
+
+        var cf = modemap.color.color_fun.constant("#FF00FF")
+        console.log(cf(null, null))
+
+        console.log(modemap.geohash.encode(37.7764386,  -122.3947219))
+        console.log(modemap.geohash.decode("9q8yyufzsq89"))
+
+        console.log(modemap.geohash.decode("9q8y"))
+    </script>
+
+    <style>
+        .map {
+            height: 500px;
+            width: 500px;
+        }
+    </style>
+
+</head>
+    <div id="test" class="map">
+        <script>
+            modemap.map.init("test", [37.7764386,   -122.3947219], 10)
+        </script>
+    </div>
+<body>
+
+
+</body>
+</html>
