@@ -219,7 +219,7 @@ var modemap = function() {
 
             for (var i=0; i<content.length; i++) {
                 console.log(content[i])
-                var marker = L.circleMarker(
+                L.circleMarker(
                     [content[i][lat_col], content[i][lng_col]],
                     {
                         radius: 2,
