@@ -211,6 +211,8 @@ var modemap = function() {
 
         plot_pts: function(map_id, center, default_zoom, query_name, lat_col, lng_col, radius_fun, color_fun) {
 
+            console.log("plot_pts!")
+
             var content = mode.get_query_content(query_name)
             console.log(content)
 
@@ -226,6 +228,7 @@ var modemap = function() {
                         fillColor: "#FF0000"
                     }
                 )
+                console.log(marker)
                 marker.add_to(map)
             }
 
@@ -239,7 +242,7 @@ var modemap = function() {
             var map = map_id instanceof String ? map.init(map_id, center, default_zoom) : map_id
 
             for (var i=0; i<content.length; i++) {
-                L.Rectangle(
+                L.rectangle(
                     geohash.decode(content[i][gh_col]).corners,
                     {
                         color: "#FF0000"
