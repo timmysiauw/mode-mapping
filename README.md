@@ -51,8 +51,7 @@ The (new) inputs are
 ```
 <div id="test-ghs" class="map">
   <script>
-    var cf = modemap.color.fun.jet("num_requests", 1000, 100000)
-    modemap.plot.ghs("test-ghs", [37.7764386,   -122.3947219], 10, "Query 2", "gh6", "num_requests", cf) 
+    modemap.plot.ghs("test-ghs", [37.7764386,   -122.3947219], 10, "Query 2", "gh6", "num_requests", null) 
   </script>
 </div>
 ```
