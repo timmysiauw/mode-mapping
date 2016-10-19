@@ -219,7 +219,7 @@ var modemap = function() {
 
             for (var i=0; i<content.length; i++) {
                 console.log(content[i])
-                L.circleMarker(
+                L.CircleMarker(
                     [content[i][lat_col], content[i][lng_col]],
                     {
                         radius: 2,
@@ -238,7 +238,7 @@ var modemap = function() {
             var map = map_id instanceof String ? map.init(map_id, center, default_zoom) : map_id
 
             for (var i=0; i<content.length; i++) {
-                L.rectangle(
+                L.Rectangle(
                     geohash.decode(content[i][gh_col]).corners,
                     {
                         color: "#FF0000"
