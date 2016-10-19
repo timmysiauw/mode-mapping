@@ -229,7 +229,7 @@ var modemap = function() {
                     }
                 )
                 console.log(marker)
-                marker.add_to(map)
+                marker.addTo(map)
             }
 
             return map
