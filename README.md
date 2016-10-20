@@ -5,6 +5,8 @@ Tools to add maps to your Mode dashboards.
 ### Context
 In the Mode editor, go to 'Report Builder', then to 'Edit HTML'. Here you can add custom HTML, CSS, and javascript to your dashboard. A global variable called ```datasets``` is available to any Javascript function, and it contains the results of all your queries. How your results are stored in this data structure is a little wonky, but the functions in this repo abstract all that away. However, be aware that if your results take up more than 15MB of space, then this object will point to a .csv file instead of as a JSON, and none of these tools will work. 
 
+See [here] (https://modeanalytics.com/lyft/reports/81a8d2d0ff81) for examples. 
+
 ### Step 1: Write a Query
 Write a query that has a 'lat' and 'lng' column, or a 'geohash' and 'value' column. The columns do not have to be named these, they just have to represent the lat/lng pairs or the geohash/value pairs you want to plot. Run your queries.
 
@@ -29,8 +31,8 @@ The inputs are
   * ```query_name``` the Mode query name where data should be pulled from
   * ```lat_col``` The name of the columns that should be used for plotting latitude
   * ```lng_col``` The name of the columns that should be used for plotting longitude
-  * ```radius_fun``` A function controlling the radius of plotted point. It should look like ```radius_fun(content, idx)```, where content is table associated with ```query_name``` and ```idx``` is the index in ```content``` currently being plotted. Note you can call on any column in ```content``` to determine the radius. If ```null``` then the radius is 2px.
-  * ```color_fun``` A function controlling the color of plotted point. It should look like ```color_fun(content, idx)```, where content is table associated with ```query_name``` and ```idx``` is the index in ```content``` currently being plotted. Note you can call on any column in ```content``` to determine the color. If ```null``` then the color is red.
+  * ```radius_fun``` A function controlling the radius of plotted point. It should look like ```radius_fun(content, idx)```, where content is the table associated with ```query_name``` and ```idx``` is the index in ```content``` currently being plotted. Note you can call on any column in ```content``` to determine the radius. If ```radius_fun = null``` then the radius is 2px.
+  * ```color_fun``` A function controlling the color of plotted point. It should look like ```color_fun(content, idx)```, where content is the table associated with ```query_name``` and ```idx``` is the index in ```content``` currently being plotted. Note you can call on any column in ```content``` to determine the color. If ```color_fun = null``` then the color is red.
 
 ####Example:
 ```
@@ -48,13 +50,54 @@ The (new) inputs are
   * ```val_col``` The value to be associated with the geohash (usually for coloring)
   * ```color_fun``` A function controlling the color of plotted point. It should look like ```color_fun(content, idx)```, where content is table associated with ```query_name``` and ```idx``` is the index in ```content``` currently being plotted. Note you can call on any column in ```content``` to determine the color. If ```null``` then the color is red.
 
+####Example:
 ```
 <div id="test-ghs" class="map">
   <script>
-    modemap.plot.ghs("test-ghs", [37.7764386,   -122.3947219], 10, "Query 2", "gh6", "num_requests", null) 
+    modemap.plot.ghs("test-ghs-2", [37.7764386, -122.3947219], 10, "Query 2", "gh6", "num_requests", cf) 
   </script>
 </div>
 ```
+
+####Geohashes:
+You can use ```LEFT(f_geohash_encode(lat, lng), 6) AS gh6``` in SQL to get a column of geohash 6's from columns ```lat``` and ```lng```. 
+
+### Color and Radius Functions
+Color and radius functions let you size/color points or color geohashes dynamically based on your SQL results. 
+
+####Example:
+```
+<div id="test-pts-2" class="map">
+  <script>
+    var rf = function(content, idx) {
+      if (content[idx]["passenger_lng"] < -122.3547) {
+        return 4
+      }
+      else {
+        return 2
+      }
+    }
+    var cf = function(content, idx) {
+      if (content[idx]["passenger_lng"] < -122.3547) {
+        return "#FF0000"
+      }
+      else {
+        return "#0000FF"
+      }
+    }
+    modemap.plot.pts("test-pts-2", [37.7764386,   -122.3947219], 10, "Query 1", "passenger_lat", "passenger_lng", rf, cf) 
+  </script>
+</div>
+```
+
+####Built-in Color Functions
+There are a few color function generators already built in to ```modemap```. More to come!
+
+1. ```modemap.color.constant(color)```: takes a color (hex string) and returns a function that will return that color for all plot markers. 
+2. ```modemap.color.jet(val_col, min_val, max_val)```: takes the name of a value column in your query results, ```val_col``` and plots color according to [JET](http://matlab.izmiran.ru/help/techdoc/ref/colormap.html) linear color scheme. Values less than ```min_val``` will be assigned the lowest color value (blue) and values higher than ```max_val``` will be assigned the highest color value (red). 
+
+####Color Pallettes
+You can access some color pallettes using ```modemap.color.palletes```
 
 ### Notes:
 You can't CDN out of a private repo (like Lyft's) so this comes out of my personal github account. There is nothing Lyft specific in this code. 
