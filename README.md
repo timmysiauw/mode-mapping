@@ -95,8 +95,8 @@ Color and radius functions let you size/color points or color geohashes dynamica
 ####Built-in Color Functions
 There are a few color function generators already built in to ```modemap```. More to come!
 
-1. ```modemap.color.constant(color)```: takes a color (hex string) and returns a function that will return that color for all plot markers. 
-2. ```modemap.color.jet(val_col, min_val, max_val)```: takes the name of a value column in your query results, ```val_col``` and returns a function that will return a color according to [JET](http://matlab.izmiran.ru/help/techdoc/ref/colormap.html) linear color scheme. Values less than ```min_val``` will be assigned the lowest color value (blue) and values higher than ```max_val``` will be assigned the highest color value (red). 
+1. ```modemap.color.fun.constant(color)```: takes a color (hex string) and returns a function that will return that color for all plot markers. 
+2. ```modemap.color.fun.jet(val_col, min_val, max_val)```: takes the name of a value column in your query results, ```val_col``` and returns a function that will return a color according to [JET](http://matlab.izmiran.ru/help/techdoc/ref/colormap.html) linear color scheme. Values less than ```min_val``` will be assigned the lowest color value (blue) and values higher than ```max_val``` will be assigned the highest color value (red). 
 
 ####Color Pallettes
 You can access some color pallettes using ```modemap.color.palletes```
