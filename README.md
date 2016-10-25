@@ -62,6 +62,8 @@ The (new) inputs are
 ####Geohashes:
 You can use ```LEFT(f_geohash_encode(lat, lng), 6) AS gh6``` in SQL to get a column of geohash 6's from columns ```lat``` and ```lng```. 
 
+You can use ```modemap.geohash.encode(lat, lng)``` and ```modemap.geohash.decode(gh)``` in Javascript to encode and decode geohashes. The ```decode``` function returns an object with properties ```lat```, ```lng```, and ```corners```. Here ```corners``` is the top-left and bottom-right corners of the geohash in the form required by Leaflet to make [rectangles] (http://leafletjs.com/reference-1.0.0.html#rectangle). 
+
 ### Color and Radius Functions
 Color and radius functions let you size/color points or color geohashes dynamically based on your SQL results. 
 
