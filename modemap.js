@@ -266,6 +266,7 @@ var modemap = function() {
             var plot_wkhr = function(wkhr) {
 
                 map.eachLayer(function (layer) {
+                    console.log("removing a layer!")
                     map.removeLayer(layer);
                 });
 
