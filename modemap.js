@@ -265,10 +265,14 @@ var modemap = function() {
 
             var plot_wkhr = function(wkhr) {
 
+
+                console.log(map)
+                /*
                 map.eachLayer(function (layer) {
                     console.log("removing a layer!")
                     map.removeLayer(layer);
                 });
+                */
 
                 for (var i=0; i<content.length; i++) {
                     if (content[i][wkhr_col] == wkhr) {
