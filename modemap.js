@@ -201,7 +201,6 @@ var modemap = function() {
             encode: encode
         }
 
-
     }()
 
     var mode = {
@@ -245,7 +244,7 @@ var modemap = function() {
                 L.rectangle(
                     geohash.decode(content[i][gh_col]).corners,
                     {
-                        weight: 1,
+                        weight: 0,
                         color: "#000000",
                         fillOpacity: 0.5,
                         fillColor: color_fun ? color_fun(content, i) : "#FF0000"
@@ -255,6 +254,42 @@ var modemap = function() {
             }
 
             return map
+        }
+
+        ghs_w_wkhr_slider: function(map_id, center, default_zoom, query_name, gh_col, val_col, wkhr_col, color_fun) {
+
+            var content = mode.get_query_content(query_name)
+
+            var map = mapping.init(map_id, center, default_zoom)
+
+            $("#" + map_id).after("<input id='" + map_id + "-wkhr-slider' class='wkhr-slider' type='range' min='0' max='167' step='0' value='0'>")
+
+            var plot_wkhr = function(wkhr) {
+                for (var i=0; i<content.length; i++) {
+                    if (content[i][wkhr_col] == wkhr) {
+                        L.rectangle(
+                            geohash.decode(content[i][gh_col]).corners,
+                            {
+                                weight: 0,
+                                color: "#000000",
+                                fillOpacity: 0.5,
+                                fillColor: color_fun ? color_fun(content, i) : "#FF0000"
+
+                            }
+                        ).addTo(map)
+                    }
+                }
+            }
+
+            $("#" + map_id + "-wkhr-slider").change(function() {
+                plot_wkhr($(this).val())
+             })
+
+            plot_wkhr(0)
+
+        }
+
+
         }
     }
 
