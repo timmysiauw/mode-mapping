@@ -257,6 +257,8 @@ var modemap = function() {
 
         ghs_w_wkhr_slider: function(map_id, center, default_zoom, query_name, gh_col, val_col, wkhr_col, color_fun) {
 
+            console.log("this happened")
+
             var content = mode.get_query_content(query_name)
 
             var map = mapping.init(map_id, center, default_zoom)
@@ -267,6 +269,13 @@ var modemap = function() {
 
                 console.log(wkhr)
                 console.log(map)
+
+                console.log("remove layers")
+                for (var layer in map._layers) {
+                    console.log("removed a layer!")
+                    map.removeLayer(layer)
+                }
+
                 /*
                 map.eachLayer(function (layer) {
                     console.log("removing a layer!")
