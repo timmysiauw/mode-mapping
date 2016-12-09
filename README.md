@@ -46,7 +46,7 @@ The inputs are
 For plotting geohashes, use ```modemap.plot.ghs(map_id, center, default_zoom, query_name, gh_col, val_col, color_fun)```:
 
 The (new) inputs are
-  * ```gh_col``` The name of the columns that should be used for plotting geohashes
+  * ```gh_col``` The name of the column that should be used for plotting geohashes
   * ```val_col``` The value to be associated with the geohash (usually for coloring)
   * ```color_fun``` A function controlling the color of plotted point. It should look like ```color_fun(content, idx)```, where content is table associated with ```query_name``` and ```idx``` is the index in ```content``` currently being plotted. Note you can call on any column in ```content``` to determine the color. If ```null``` then the color is red.
 
@@ -57,6 +57,20 @@ The (new) inputs are
     modemap.plot.ghs("test-ghs-2", [37.7764386, -122.3947219], 10, "Query 2", "gh6", "num_requests", cf) 
   </script>
 </div>
+```
+
+For plotting geohashes with a week hour slider, use ```modemap.plot.ghs_w_wkhr_slider(map_id, center, default_zoom, query_name, gh_col, val_col, wkhr_col, color_fun)```:
+
+The (new) input are
+ * ```wkhr_col``` The name of the column that should be used for the week hour. 
+ 
+####Example:
+```
+<div id="test-ghs-3" class="map">
+  <script>
+    var cf = modemap.color.fun.jet("req_cnt", 1, 20)
+    modemap.plot.ghs_w_wkhr_slider("test-ghs-3", [37.7764386, -122.3947219], 10, "Query 3", "gh6", "req_cnt", "wkhr", cf)
+</script>
 ```
 
 ####Geohashes:
