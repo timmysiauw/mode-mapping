@@ -257,35 +257,25 @@ var modemap = function() {
 
         ghs_w_wkhr_slider: function(map_id, center, default_zoom, query_name, gh_col, val_col, wkhr_col, color_fun) {
 
-            console.log("this happened")
-
             var content = mode.get_query_content(query_name)
 
             var map = mapping.init(map_id, center, default_zoom)
 
             $("#" + map_id).after("<input id='" + map_id + "-wkhr-slider' class='wkhr-slider' type='range' min='0' max='167' step='0' value='0'>")
 
+            var layers = []
+
             var plot_wkhr = function(wkhr) {
 
-                console.log(wkhr)
-                console.log(map)
-
-                console.log("remove layers")
-                for (var layer_id in map._layers) {
-                    console.log("removed a layer!")
-                    map.removeLayer(map._layers[layer_id])
+                for (var i=0; i<layers.length; i++) {
+                    map.removeLayer(layers[i])
                 }
 
-                /*
-                map.eachLayer(function (layer) {
-                    console.log("removing a layer!")
-                    map.removeLayer(layer);
-                });
-                */
+                layers = []
 
                 for (var i=0; i<content.length; i++) {
                     if (content[i][wkhr_col] == wkhr) {
-                        L.rectangle(
+                        var layer = L.rectangle(
                             geohash.decode(content[i][gh_col]).corners,
                             {
                                 weight: 0,
@@ -293,7 +283,11 @@ var modemap = function() {
                                 fillOpacity: 0.5,
                                 fillColor: color_fun ? color_fun(content, i) : "#FF0000"
                             }
-                        ).addTo(map)
+                        )
+
+                        layer.addTo(map)
+
+                        layers.push(layer)
                     }
                 }
             }
