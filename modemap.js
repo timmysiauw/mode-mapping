@@ -264,6 +264,9 @@ var modemap = function() {
             $("#" + map_id).after("<input id='" + map_id + "-wkhr-slider' class='wkhr-slider' type='range' min='0' max='167' step='0' value='0'>")
 
             var plot_wkhr = function(wkhr) {
+
+                map.clearLayers()
+
                 for (var i=0; i<content.length; i++) {
                     if (content[i][wkhr_col] == wkhr) {
                         L.rectangle(
