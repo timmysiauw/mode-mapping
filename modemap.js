@@ -271,9 +271,9 @@ var modemap = function() {
                 console.log(map)
 
                 console.log("remove layers")
-                for (var layer in map._layers) {
+                for (var layer_id in map._layers) {
                     console.log("removed a layer!")
-                    map.removeLayer(layer)
+                    map.removeLayer(map._layers[layer_id])
                 }
 
                 /*
