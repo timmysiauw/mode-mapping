@@ -265,7 +265,7 @@ var modemap = function() {
 
             var plot_wkhr = function(wkhr) {
 
-
+                console.log(wkhr)
                 console.log(map)
                 /*
                 map.eachLayer(function (layer) {
