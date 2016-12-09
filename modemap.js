@@ -248,13 +248,12 @@ var modemap = function() {
                         color: "#000000",
                         fillOpacity: 0.5,
                         fillColor: color_fun ? color_fun(content, i) : "#FF0000"
-
                     }
                 ).addTo(map)
             }
 
             return map
-        }
+        },
 
         ghs_w_wkhr_slider: function(map_id, center, default_zoom, query_name, gh_col, val_col, wkhr_col, color_fun) {
 
@@ -274,7 +273,6 @@ var modemap = function() {
                                 color: "#000000",
                                 fillOpacity: 0.5,
                                 fillColor: color_fun ? color_fun(content, i) : "#FF0000"
-
                             }
                         ).addTo(map)
                     }
@@ -286,11 +284,8 @@ var modemap = function() {
              })
 
             plot_wkhr(0)
-
         }
 
-
-        }
     }
 
     return {
