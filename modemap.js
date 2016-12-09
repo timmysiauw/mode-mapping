@@ -265,7 +265,9 @@ var modemap = function() {
 
             var plot_wkhr = function(wkhr) {
 
-                map.clearLayers()
+                map.eachLayer(function (layer) {
+                    map.removeLayer(layer);
+                });
 
                 for (var i=0; i<content.length; i++) {
                     if (content[i][wkhr_col] == wkhr) {
