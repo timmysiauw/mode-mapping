@@ -312,10 +312,12 @@ var modemap = function() {
                 plot_wkhr(wkhr)
 
                 dayhr = (wkhr % 24) % 12
+                dayhr = dayhr ? 12 : dayhr
+
                 daylight_name = daylight_to_name[Math.floor((wkhr % 24) / 12)]
                 day_name = day_to_name[Math.floor(wkhr / 7)]
 
-                $("#" + map_id + "-wkhr-display").text(day_name + " " + dayhr + daylight_name)
+                $("#" + map_id + "-wkhr-display").text(day_name + " " + String(dayhr) + daylight_name)
              })
 
             plot_wkhr(0)
