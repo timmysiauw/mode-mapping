@@ -292,10 +292,30 @@ var modemap = function() {
                 }
             }
 
+            day_to_name = {
+                0: "Monday",
+                1: "Tuesday",
+                2: "Wednesday",
+                3: "Thursday",
+                4: "Friday",
+                5: "Saturday",
+                6: "Sunday"
+            }
+
+            daylight_to_name = {
+                0: "am",
+                1: "pm"
+            }
+
             $("#" + map_id + "-wkhr-slider").change(function() {
                 var wkhr = $(this).val()
                 plot_wkhr(wkhr)
-                $("#" + map_id + "-wkhr-display").text(wkhr)
+
+                dayhr = (wkhr % 24) % 12
+                daylight_name = daylight_to_name[Math.floor((wkhr % 24) / 12)]
+                day_name = day_to_name[Math.floor(wkhr / 7)]
+
+                $("#" + map_id + "-wkhr-display").text(day_name + " " + dayhr + daylight_name)
              })
 
             plot_wkhr(0)
