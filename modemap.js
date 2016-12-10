@@ -315,11 +315,7 @@ var modemap = function() {
                 dayhr = dayhr ? dayhr : 12
 
                 var daylight_name = daylight_to_name[Math.floor((wkhr % 24) / 12)]
-                console.log(daylight_name)
-
                 var day_name = day_to_name[Math.floor(wkhr / 24)]
-
-                console.log(String(dayhr))
 
                 $("#" + map_id + "-wkhr-display").text(day_name + ", " + String(dayhr) + daylight_name)
 
