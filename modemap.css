@@ -13,17 +13,18 @@
 }
 
 .wkhr-slider {
-    width: 700px;
+    width: 550px;
     display: inline-block;
     vertical-align: middle;
     line-height: 30px;
 }
 
 .wkhr-display {
-    width: 100px;
+    width: 250px;
     display: inline-block;
     vertical-align: middle;
     line-height: 30px;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: bold;
+    text-align: center;
 }
