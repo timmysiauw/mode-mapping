@@ -261,7 +261,7 @@ var modemap = function() {
 
             var map = mapping.init(map_id, center, default_zoom)
 
-            $("#" + map_id).after("<div class='wkhr-slider-container'><input id='" + map_id + "-wkhr-slider' class='wkhr-slider' type='range' min='0' max='167' step='0' value='0'></div>")
+            $("#" + map_id).after("<div class='wkhr-slider-container'><input id='" + map_id + "-wkhr-slider' class='wkhr-slider' type='range' min='0' max='167' step='0' value='0'><div class='wkhr-display'>0</div></div>")
 
             var layers = []
 
