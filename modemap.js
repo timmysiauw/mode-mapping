@@ -292,7 +292,7 @@ var modemap = function() {
                 }
             }
 
-            day_to_name = {
+            var day_to_name = {
                 0: "Monday",
                 1: "Tuesday",
                 2: "Wednesday",
@@ -302,7 +302,7 @@ var modemap = function() {
                 6: "Sunday"
             }
 
-            daylight_to_name = {
+            var daylight_to_name = {
                 0: "am",
                 1: "pm"
             }
@@ -311,17 +311,20 @@ var modemap = function() {
                 var wkhr = $(this).val()
                 plot_wkhr(wkhr)
 
-                dayhr = (wkhr % 24) % 12
-                dayhr = dayhr ? 12 : dayhr
+                var dayhr = (wkhr % 24) % 12
+                dayhr = dayhr ? dayhr : 12
 
-                daylight_name = daylight_to_name[Math.floor((wkhr % 24) / 12)]
+                var daylight_name = daylight_to_name[Math.floor((wkhr % 24) / 12)]
+                console.log(daylight_name)
 
-                day_name = day_to_name[Math.floor(wkhr / 24)]
+                var day_name = day_to_name[Math.floor(wkhr / 24)]
 
-                $("#" + map_id + "-wkhr-display").text(day_name + " " + String(dayhr) + daylight_name)
+                console.log(String(dayhr))
+
+                $("#" + map_id + "-wkhr-display").text(day_name + ", " + String(dayhr) + daylight_name)
+
              }).trigger("change")
 
-            //plot_wkhr(0)
         }
 
     }
