@@ -4,8 +4,13 @@
     margin: 0 auto;
 }
 
+.wkhr-slider-container {
+    width: 100%;
+    text-align: center;
+}
+
 .wkhr-slider {
     width: 800px;
     margin: 10px auto;
-    text-align: center;
+
 }
