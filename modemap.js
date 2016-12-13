@@ -234,7 +234,7 @@ var modemap = function() {
             return map
         },
 
-        ghs: function(map_id, center, default_zoom, query_name, gh_col, val_col, color_fun) {
+        ghs: function(map_id, center, default_zoom, query_name, gh_col, val_col, color_fun, opacity) {
 
             var content = mode.get_query_content(query_name)
 
@@ -246,7 +246,7 @@ var modemap = function() {
                     {
                         weight: 0,
                         color: "#000000",
-                        fillOpacity: 0.5,
+                        fillOpacity: opacity || 0.5,
                         fillColor: color_fun ? color_fun(content, i) : "#FF0000"
                     }
                 ).addTo(map)
@@ -288,11 +288,7 @@ var modemap = function() {
                         layer.gh_val = content[i][val_col]
 
                         layer.on("mouseover", function(e) {
-                            //console.log("this happened")
-                            //console.log(this.gh_val)
-
                             $("#" + map_id + "-val-display").text(this.gh_val)
-
                         })
 
                         layer.addTo(map)
@@ -330,7 +326,6 @@ var modemap = function() {
                 $("#" + map_id + "-wkhr-display").text(day_name + ", " + String(dayhr) + daylight_name)
 
              }).trigger("change")
-
 
         }
 
