@@ -285,6 +285,12 @@ var modemap = function() {
                             }
                         )
 
+                        layer.gh_val = content[i][val_col]
+
+                        layer.on({"mouseover": function() {
+                            console.log(this.gh_val)
+                        })
+
                         layer.addTo(map)
 
                         layers.push(layer)
