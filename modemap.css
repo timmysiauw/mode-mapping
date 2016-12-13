@@ -12,14 +12,24 @@
 }
 
 .wkhr-slider {
-    width: 550px;
+    width: 500px;
     display: inline-block;
     vertical-align: middle;
     line-height: 30px;
 }
 
 .wkhr-display {
-    width: 250px;
+    width: 200px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.val-display {
+    width: 100px;
     display: inline-block;
     vertical-align: middle;
     line-height: 30px;

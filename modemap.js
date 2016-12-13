@@ -261,7 +261,7 @@ var modemap = function() {
 
             var map = mapping.init(map_id, center, default_zoom)
 
-            $("#" + map_id).after("<div class='wkhr-slider-container'><input id='" + map_id + "-wkhr-slider' class='wkhr-slider' type='range' min='0' max='167' step='0' value='0'><div id='" + map_id + "-wkhr-display' class='wkhr-display'>0</div></div>")
+            $("#" + map_id).after("<div class='wkhr-slider-container'><input id='" + map_id + "-wkhr-slider' class='wkhr-slider' type='range' min='0' max='167' step='0' value='0'><div id='" + map_id + "-wkhr-display' class='wkhr-display'>0</div><div id='" + map_id + "-val-display' class='val-display'</div>")
 
             var layers = []
 
@@ -288,8 +288,11 @@ var modemap = function() {
                         layer.gh_val = content[i][val_col]
 
                         layer.on("mouseover", function(e) {
-                            console.log("this happened")
-                            console.log(this.gh_val)
+                            //console.log("this happened")
+                            //console.log(this.gh_val)
+
+                            $("#" + map_id + "-val-display").text(this.gh_val)
+
                         })
 
                         layer.addTo(map)
@@ -327,6 +330,7 @@ var modemap = function() {
                 $("#" + map_id + "-wkhr-display").text(day_name + ", " + String(dayhr) + daylight_name)
 
              }).trigger("change")
+
 
         }
 
