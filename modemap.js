@@ -287,7 +287,8 @@ var modemap = function() {
 
                         layer.gh_val = content[i][val_col]
 
-                        layer.on({"mouseover": function() {
+                        layer.on("mouseover", function(e) {
+                            console.log("this happened")
                             console.log(this.gh_val)
                         })
 
