@@ -285,10 +285,11 @@ var modemap = function() {
                             }
                         )
 
+                        layer.gh = content[i][gh_col]
                         layer.gh_val = content[i][val_col]
 
                         layer.on("mouseover", function(e) {
-                            $("#" + map_id + "-val-display").text(this.gh_val)
+                            $("#" + map_id + "-val-display").text(this.gh + ": " + this.gh_val)
                         })
 
                         layer.addTo(map)
