@@ -52,7 +52,7 @@ The (new) inputs are
 
 ####Example:
 ```
-<div id="test-ghs" class="map">
+<div id="test-ghs-2" class="map">
   <script>
     modemap.plot.ghs("test-ghs-2", [37.7764386, -122.3947219], 10, "Query 2", "gh6", "num_requests", cf) 
   </script>
