@@ -75,6 +75,7 @@ var modemap = function() {
     var mapping = {
         init: function(map_id, center, default_zoom) {
             var map = L.map(map_id).setView(center, default_zoom)
+            /**
             L.tileLayer(
                 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw',
                 {
@@ -85,6 +86,11 @@ var modemap = function() {
                     id: 'mapbox.streets'
                 }
             ).addTo(map)
+            **/
+            
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map)
 
             return map
         }
