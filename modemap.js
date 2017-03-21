@@ -213,7 +213,7 @@ var modemap = function() {
         get_query_content: function(query_name) {
             console.log("dataset")
             console.log(dataset)
-            console.log("datasets)
+            console.log("datasets")
             console.log(datasets)
             return datasets.filter(function(d) { return d.queryName == query_name; })[0].content
         }
