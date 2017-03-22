@@ -75,7 +75,7 @@ var modemap = function() {
     var mapping = {
         init: function(map_id, center, default_zoom) {
             var map = L.map(map_id).setView(center, default_zoom)
-            /**
+            /** with available mapbox auth tocken
             L.tileLayer(
                 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw',
                 {
@@ -211,10 +211,6 @@ var modemap = function() {
 
     var mode = {
         get_query_content: function(query_name) {
-            console.log("dataset")
-            console.log(dataset)
-            console.log("datasets")
-            console.log(datasets)
             return datasets.filter(function(d) { return d.queryName == query_name; })[0].content
         }
     }
