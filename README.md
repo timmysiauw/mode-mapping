@@ -34,7 +34,7 @@ The inputs are
   * ```radius_fun``` A function controlling the radius of plotted point. It should look like ```radius_fun(content, idx)```, where content is the table associated with ```query_name``` and ```idx``` is the index in ```content``` currently being plotted. Note you can call on any column in ```content``` to determine the radius. If ```radius_fun = null``` then the radius is 2px.
   * ```color_fun``` A function controlling the color of plotted point. It should look like ```color_fun(content, idx)```, where content is the table associated with ```query_name``` and ```idx``` is the index in ```content``` currently being plotted. Note you can call on any column in ```content``` to determine the color. If ```color_fun = null``` then the color is red.
 
-###Example:
+#### Example:
 ```
 <div id="test-pts" class="map">
   <script>
@@ -50,7 +50,7 @@ The (new) inputs are
   * ```val_col``` The value to be associated with the geohash (usually for coloring)
   * ```color_fun``` A function controlling the color of plotted point. It should look like ```color_fun(content, idx)```, where content is table associated with ```query_name``` and ```idx``` is the index in ```content``` currently being plotted. Note you can call on any column in ```content``` to determine the color. If ```null``` then the color is red.
 
-###Example:
+#### Example:
 ```
 <div id="test-ghs-2" class="map">
   <script>
@@ -64,7 +64,7 @@ For plotting geohashes with a week hour slider, use ```modemap.plot.ghs_w_wkhr_s
 The (new) input are
  * ```wkhr_col``` The name of the column that should be used for the week hour. 
  
-###Example:
+#### Example:
 ```
 <div id="test-ghs-3" class="map">
   <script>
@@ -81,7 +81,7 @@ You can use ```modemap.geohash.encode(lat, lng)``` and ```modemap.geohash.decode
 ### Color and Radius Functions
 Color and radius functions let you size/color points or color geohashes dynamically based on your SQL results. 
 
-###Example:
+#### Example:
 ```
 <div id="test-pts-2" class="map">
   <script>
@@ -106,13 +106,13 @@ Color and radius functions let you size/color points or color geohashes dynamica
 </div>
 ```
 
-###Built-in Color Functions
+### Built-in Color Functions
 There are a few color function generators already built in to ```modemap```. More to come!
 
 1. ```modemap.color.fun.constant(color)```: takes a color (hex string) and returns a function that will return that color for all plot markers. 
 2. ```modemap.color.fun.jet(val_col, min_val, max_val)```: takes the name of a value column in your query results, ```val_col``` and returns a function that will return a color according to [JET](http://matlab.izmiran.ru/help/techdoc/ref/colormap.html) linear color scheme. Values less than ```min_val``` will be assigned the lowest color value (blue) and values higher than ```max_val``` will be assigned the highest color value (red). 
 
-###Color Pallettes
+### Color Pallettes
 You can access some color pallettes using ```modemap.color.palletes```
 
 ### Notes:
