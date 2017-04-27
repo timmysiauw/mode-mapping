@@ -337,12 +337,98 @@ var modemap = function() {
         }
 
     }
+    
+    var region = {
+      "Atlanta": {
+        "center": [33.8464, -84.3312],
+        "default_zoom": 11
+      },
+      "Baltimore": {
+        "center": [39.1754, -76.6549],
+        "default_zoom": 11
+      },
+      "Boston": {
+        "center": [42.2881, -71.0713],
+        "default_zoom": 11
+      },
+      "Chicago": {
+        "center": [41.8611, -87.9679],
+        "default_zoom": 12
+      },
+      "Dallas": {
+        "center": [32.908, -96.9811],
+        "default_zoom": 11
+      },
+      "Denver": {
+        "center": [39.7796, -104.941],
+        "default_zoom": 11
+      },
+      "Las Vegas": {
+        "center": [36.2251, -115.1055],
+        "default_zoom": 12
+      },
+      "Los Angeles": {
+        "center": [34.1705, -118.6802],
+        "default_zoom": 10
+      },
+      "Miami": {
+        "center": [26.0542, -80.4303
+        ],
+        "default_zoom": 12
+      },
+      "New Jersey": {
+        "center": [40.073, -74.7322],
+        "default_zoom": 8
+      },
+      "New York": {
+        "center": [40.702, -73.9794],
+        "default_zoom": 13
+      },
+      "Orange County": {
+        "center": [33.7919, -117.779
+        ],
+        "default_zoom": 11
+      },
+      "Philadelphia": {
+        "center": [39.9403, -75.3279],
+        "default_zoom": 12
+      },
+      "Phoenix": {
+        "center": [33.3273, -112.0712],
+        "default_zoom": 11
+      },
+      "Portland": {
+        "center": [45.5792, -122.6336],
+        "default_zoom": 12
+      },
+      "Sacramento": {
+        "center": [38.6499, -121.4081],
+        "default_zoom": 10
+      },
+      "San Diego": {
+        "center": [32.8894, -117.1234],
+        "default_zoom": 11
+      },
+      "San Francisco": {
+        "center": [37.7828, -122.1312],
+        "default_zoom": 10
+      },
+      "Seattle": {
+        "center": [47.699, -122.224],
+        "default_zoom": 10
+      },
+      "Washington D.C.": {
+        "center": [38.9176, -77.1453],
+        "default_zoom": 11
+      }
+    }
 
     return {
         color: color,
         mapping: mapping,
         geohash: geohash,
         mode: mode,
-        plot: plot
+        plot: plot,
+        region: region
     }
 }()
