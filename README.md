@@ -112,6 +112,9 @@ There are a few color function generators already built in to ```modemap```. Mor
 1. ```modemap.color.fun.constant(color)```: takes a color (hex string) and returns a function that will return that color for all plot markers. 
 2. ```modemap.color.fun.jet(val_col, min_val, max_val)```: takes the name of a value column in your query results, ```val_col``` and returns a function that will return a color according to [JET](http://matlab.izmiran.ru/help/techdoc/ref/colormap.html) linear color scheme. Values less than ```min_val``` will be assigned the lowest color value (blue) and values higher than ```max_val``` will be assigned the highest color value (red). 
 
+### Region Center and Default Zoom
+You can access `modemap.region` to get region centers and default zooms. To avoid using Lyft-specific region codes, city names are used instead. For example, `modemap.region['San Francisco'].center = [37.7764386,   -122.3947219]`. You can use this information as input to the modemap plotting tools instead of looking them up elsewhere. 
+
 ### Color Pallettes
 You can access some color pallettes using ```modemap.color.palletes```
 
