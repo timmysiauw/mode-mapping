@@ -118,5 +118,8 @@ You can access `modemap.region` to get region centers and default zooms. To avoi
 ### Color Pallettes
 You can access some color pallettes using ```modemap.color.palletes```
 
+### Troubleshooting
+You cannot have an unrun query in your list of queries. The map will not show up. 
+
 ### Notes:
 You can't CDN out of a private repo (like Lyft's) so this comes out of my personal github account. There is nothing Lyft specific in this code. 
