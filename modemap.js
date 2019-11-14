@@ -257,7 +257,7 @@ var modemap = function() {
                     }
                 )
                 
-                gh.bindPopup(content[i][gh_col] + ': ' + String(content[i].val_col))
+                gh.bindPopup(content[i][gh_col] + ': ' + String(content[i][val_col]))
                 
                 gh.addTo(map)
             }
