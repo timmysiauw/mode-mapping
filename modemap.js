@@ -247,7 +247,7 @@ var modemap = function() {
             var map = mapping.init(map_id, center, default_zoom)
 
             for (var i=0; i<content.length; i++) {
-                L.rectangle(
+                var gh = L.rectangle(
                     geohash.decode(content[i][gh_col]).corners,
                     {
                         weight: 0,
@@ -255,7 +255,11 @@ var modemap = function() {
                         fillOpacity: opacity || 0.5,
                         fillColor: color_fun ? color_fun(content, i) : "#FF0000"
                     }
-                ).addTo(map)
+                )
+                
+                gh.bindPopup(content[i][gh_col] + ': ' + str(content[i].val_col))
+                
+                gh.addTo(map)
             }
 
             return map
