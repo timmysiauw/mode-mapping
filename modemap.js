@@ -223,9 +223,7 @@ var modemap = function() {
 
             var map = mapping.init(map_id, center, default_zoom)
 
-            for (var i=0; i<content.length; i++) {
-                row_fun(map, content, i)
-            }
+            for (var i=0; i<content.length; i++) {row_fun(map, content, i)}
 
             return map 
         },
