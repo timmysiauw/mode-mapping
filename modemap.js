@@ -217,6 +217,19 @@ var modemap = function() {
 
     var plot = {
 
+        any: function(map_id, center, default_zoom, query_name, row_fun) {
+
+            var content = mode.get_query_content(query_name)
+
+            var map = mapping.init(map_id, center, default_zoom)
+
+            for (var i=0; i<content.length; i++) {
+                row_fun(map, content, idx)
+            }
+
+            return map 
+        },
+
         pts: function(map_id, center, default_zoom, query_name, lat_col, lng_col, radius_fun, color_fun) {
 
             var content = mode.get_query_content(query_name)
