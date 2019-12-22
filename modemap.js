@@ -1,5 +1,81 @@
 var modemap = function() {
 
+      var jet_colors = (function() {
+          
+          var componentToHex = function(c) {
+              var hex = c.toString(16);
+              return hex.length == 1 ? "0" + hex : hex;
+          };
+
+          var rgbToHex = function(r, g, b) {
+              return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+          };
+          
+          var colors = {
+              r: new Uint8Array(256),
+              g: new Uint8Array(256),
+              b: new Uint8Array(256),
+              hex: []
+          }
+
+          var r, g, b;
+          for (var i=0; i<256; i++) {
+
+              r = Math.min(255, 4*(i-96), 255 - 4*(i-224));
+              r = r < 0 ? 0 : r;
+
+              g = Math.min(255, 4*(i-32), 255 - 4*(i-160));
+              g = g < 0 ? 0 : g;
+
+              b = Math.min(255, 4*i + 127, 255 - 4*(i-96));
+              b = b < 0 ? 0 : b;
+
+              colors.r[i] = r;
+              colors.g[i] = g;
+              colors.b[i] = b;
+              colors.hex.push(rgbToHex(r,g,b));
+          }
+
+          colors.index = function(min, max, value) {
+              if (value > max) return 255;
+              else if (value < min) return 0;
+              else return Math.floor(256*(value - min)/(max-min));
+          }
+
+          return colors 
+
+      })()
+
+      var jet_colorbar = function(map_id, min, max) {
+            
+        $('#' + map_id).after('<div class="colorbar-container"><div class="colorbar-ticks"></div><div class="colorbar"></div></div>')
+        
+        var $colorbar = $('#' + map_id).siblings('.colorbar-container').children('.colorbar')
+        
+        for (var i=0; i<256; i++) {
+        
+          var stripe_color_index = jet_colors.index(
+            min,
+            max, 
+            min + (max - min) * (i / 256)
+          )
+          
+          var stripe_color = jet_colors.hex[stripe_color_index]
+          
+          $colorbar.append('<div class="colorbar-stripe" style="background-color:' + stripe_color + '"></div>')
+          
+        }
+      
+      var $colorbar_ticks = $('#' + map_id).siblings('.colorbar-container').children('.colorbar-ticks')
+      
+      $colorbar_ticks.append('<div class="colorbar-tick colorbar-tick-left">' + String(min) + '</div>')
+      $colorbar_ticks.append('<div class="colorbar-tick colorbar-tick-middle">' + String((min + max) / 2) + '</div>')
+      $colorbar_ticks.append('<div class="colorbar-tick colorbar-tick-right">' + String(max) + '</div>')
+        
+      }
+          
+
+
     var color = {
         pallettes: {
             "lyft": {
@@ -25,6 +101,8 @@ var modemap = function() {
                 }
             },
             jet: function(val_col, min_sat, max_sat) {
+                
+                /*
                 var componentToHex = function(c) {
                     var hex = c.toString(16);
                     return hex.length == 1 ? "0" + hex : hex;
@@ -64,11 +142,18 @@ var modemap = function() {
                     else if (value < min) return 0;
                     else return Math.floor(256*(value - min)/(max-min));
                 }
+                */
+
+
 
                 return function(content, idx) {
-                    return colors.hex[colors.index(min_sat, max_sat, content[idx][val_col])]
+                    return jet_colors.hex[jet_colors.index(min_sat, max_sat, content[idx][val_col])]
                 }
             }
+        }, 
+        utils: {
+            jet_colors: jet_colors, 
+            jet_colorbar: jet_colorbar
         }
     }
 

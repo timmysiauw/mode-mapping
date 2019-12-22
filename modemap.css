@@ -37,3 +37,60 @@
     font-weight: bold;
     text-align: center;
 }
+
+  .colorbar-container {
+    margin: 20px auto;
+    text-align: center;
+    height: 41px;
+    width: 256px;
+  }
+  
+  .colorbar {
+    width: 256px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .colorbar-stripe {
+    width: 1px;
+    height: 20px;
+    background-color: blue;
+    color: blue;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
+  
+  .colorbar-ticks {
+    height: 20px;
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 0px;
+    top: 0px;
+  }
+  
+  .colorbar-tick {
+    border-left: 1px solid black;
+    padding-left: 3px;
+  }
+  
+  .colorbar-tick-left {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+  
+  .colorbar-tick-middle {
+    position: absolute;
+    left: 127px;
+    top: 0px;
+  }
+  
+  .colorbar-tick-right {
+    position: absolute;
+    left: 253px;
+    top: 0px;
+  }
