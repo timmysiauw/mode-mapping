@@ -359,7 +359,7 @@ var modemap = function() {
             return map
         },
 
-        ghs_w_wkhr_slider: function(map_id, center, default_zoom, query_name, gh_col, val_col, wkhr_col, color_fun) {
+        ghs_w_wkhr_slider: function(map_id, center, default_zoom, query_name, gh_col, val_col, wkhr_col, color_fun, opacity) {
 
             var content = mode.get_query_content(query_name)
 
@@ -384,7 +384,7 @@ var modemap = function() {
                             {
                                 weight: 0,
                                 color: "#000000",
-                                fillOpacity: 0.5,
+                                fillOpacity: opacity || 0.5,
                                 fillColor: color_fun ? color_fun(content, i) : "#FF0000"
                             }
                         )
